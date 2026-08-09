@@ -6,9 +6,7 @@ export const docsWriteProductOverview = tool({
   description: "Write or update overview in a product subdirectory",
   schema: z.object({
     productId: z.string().describe("Product ID"),
-    type: z
-      .enum(["features", "routes"])
-      .describe("Type of overview to write within the product"),
+    type: z.enum(["features", "routes"]).describe("Type of overview to write within the product"),
     markdown: z.string().describe("Markdown content for the overview"),
   }),
   async handler(input, context) {

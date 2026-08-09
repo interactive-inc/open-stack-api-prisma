@@ -3,8 +3,7 @@ import { tool } from "../tool"
 
 export const docsListProducts = tool({
   name: "docs-list-products",
-  description:
-    "List all products - useful for retrieving product IDs to use with other tools",
+  description: "List all products - useful for retrieving product IDs to use with other tools",
   schema: z.object({}),
   async handler(_, context) {
     const ref = context.docClient.directory("products")

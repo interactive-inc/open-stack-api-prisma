@@ -6,9 +6,7 @@ export const docsWriteProductFile = tool({
   description: "Write or update a product feature",
   schema: z.object({
     productId: z.string().describe("Product ID"),
-    type: z
-      .enum(["features", "entities", "notes"])
-      .describe("Type of document to write"),
+    type: z.enum(["features", "entities", "notes"]).describe("Type of document to write"),
     fileId: z.string().describe("File ID to write or update"),
     markdown: z.string().describe("Markdown content"),
   }),

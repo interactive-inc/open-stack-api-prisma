@@ -9,17 +9,13 @@ export const docsDeleteProductFiles = tool({
     type: z
       .enum(["features", "routes", "entities", "notes"])
       .describe("Type of files to delete within the product"),
-    fileIds: z
-      .array(z.string())
-      .describe("Array of IDs to delete (overview is not allowed)"),
+    fileIds: z.array(z.string()).describe("Array of IDs to delete (overview is not allowed)"),
   }),
   async handler(input, context) {
     const indexFiles = input.fileIds.indexOf("index")
 
     if (indexFiles !== -1) {
-      throw new Error(
-        "Overview files are not allowed. Delete the parent directory instead.",
-      )
+      throw new Error("Overview files are not allowed. Delete the parent directory instead.")
     }
 
     const baseDir = context.docClient

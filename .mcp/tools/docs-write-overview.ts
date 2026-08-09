@@ -7,9 +7,7 @@ export const docsWriteOverview = tool({
   schema: z.object({
     type: z
       .enum(["project", "products", "repositories"])
-      .describe(
-        "Type of overview to write (project for overall project overview)",
-      ),
+      .describe("Type of overview to write (project for overall project overview)"),
     markdown: z.string().describe("Markdown content for the overview"),
   }),
   async handler(input, context) {

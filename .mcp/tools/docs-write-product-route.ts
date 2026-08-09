@@ -7,10 +7,7 @@ export const docsWriteProductRoute = tool({
   schema: z.object({
     productId: z.string().describe("Product ID"),
     pageId: z.string().describe("Page ID to write or update"),
-    relatedFeatureIds: z
-      .string()
-      .array()
-      .describe("Array of related feature IDs"),
+    relatedFeatureIds: z.string().array().describe("Array of related feature IDs"),
     markdown: z.string().describe("Markdown content"),
   }),
   async handler(input, context) {
@@ -30,9 +27,7 @@ export const docsWriteProductRoute = tool({
 
       const draftContent = empty.content.withBody(input.markdown)
 
-      const draftMeta = empty.content
-        .meta()
-        .withProperty("features", input.relatedFeatureIds)
+      const draftMeta = empty.content.meta().withProperty("features", input.relatedFeatureIds)
 
       const draft = empty.withContent(draftContent).withMeta(draftMeta)
 
@@ -49,9 +44,7 @@ export const docsWriteProductRoute = tool({
 
     const draftContent = current.content.withBody(input.markdown)
 
-    const draftMeta = current.content
-      .meta()
-      .withProperty("features", input.relatedFeatureIds)
+    const draftMeta = current.content.meta().withProperty("features", input.relatedFeatureIds)
 
     const draft = current.withContent(draftContent).withMeta(draftMeta)
 

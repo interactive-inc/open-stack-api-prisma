@@ -36,16 +36,10 @@ export const docsReadProductRoutes = tool({
       for (const featureRef of featureRefs) {
         const result = await featureRef.read()
         if (result instanceof Error) continue
-        features.push(
-          withHeader("features", result.path.name, result.content.body),
-        )
+        features.push(withHeader("features", result.path.name, result.content.body))
       }
 
-      const pageContent = toToolResultContent(
-        file.path.name,
-        file.content.body,
-        features,
-      )
+      const pageContent = toToolResultContent(file.path.name, file.content.body, features)
 
       results.push({
         type: "text",

@@ -1,9 +1,6 @@
 import { exists } from "node:fs/promises"
 import { join } from "node:path"
-import type {
-  CallToolRequest,
-  CallToolResult,
-} from "@modelcontextprotocol/sdk/types.js"
+import type { CallToolRequest, CallToolResult } from "@modelcontextprotocol/sdk/types.js"
 import { z } from "zod"
 
 const jsonSchema = z.object({
@@ -17,18 +14,11 @@ export const zodToJsonSchema = (schema: z.core.$ZodType) => {
 }
 
 export function createToolFactory<Context extends Record<string, unknown>>() {
-  return <
-    TSchema extends z.ZodObject,
-    TName extends string,
-    TDescription extends string,
-  >(config: {
+  return <TSchema extends z.ZodObject, TName extends string, TDescription extends string>(config: {
     schema: TSchema
     name: TName
     description: TDescription
-    handler: (
-      input: z.core.output<TSchema>,
-      context: Context,
-    ) => Promise<CallToolResult>
+    handler: (input: z.core.output<TSchema>, context: Context) => Promise<CallToolResult>
   }) => {
     const meta = {
       name: config.name,
@@ -60,19 +50,11 @@ export async function getDocsPath(...paths: string[]) {
   throw new Error("No docs directory found")
 }
 
-export function toToolResultContent(
-  id: string,
-  body: string,
-  sections: string[],
-): string {
+export function toToolResultContent(id: string, body: string, sections: string[]): string {
   const parts = [`id: ${id}`, body, ...sections]
   return parts.join("\n\n")
 }
 
-export function withHeader(
-  directoryId: string,
-  fileId: string,
-  content: string,
-): string {
+export function withHeader(directoryId: string, fileId: string, content: string): string {
   return `--- ${directoryId}:${fileId} ---\n\n${content}`
 }

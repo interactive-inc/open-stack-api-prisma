@@ -1,10 +1,7 @@
 import { DocClient, DocFileSystem } from "@interactive-inc/docs-client"
 import { Server } from "@modelcontextprotocol/sdk/server/index.js"
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
-import {
-  CallToolRequestSchema,
-  ListToolsRequestSchema,
-} from "@modelcontextprotocol/sdk/types.js"
+import { CallToolRequestSchema, ListToolsRequestSchema } from "@modelcontextprotocol/sdk/types.js"
 import { getDocsPath } from "./lib"
 import { docsCreateProduct } from "./tools/docs-create-product"
 import { docsCreateRepositoryIssue } from "./tools/docs-create-repository-issue"

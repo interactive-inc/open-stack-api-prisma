@@ -8,9 +8,7 @@ export const docsReadOverview = tool({
   schema: z.object({
     type: z
       .enum(["project", "products", "repositories"])
-      .describe(
-        "Type of overview to read (project for overall project overview)",
-      ),
+      .describe("Type of overview to read (project for overall project overview)"),
   }),
   async handler(input, context) {
     const directoryPath = input.type === "project" ? "" : input.type

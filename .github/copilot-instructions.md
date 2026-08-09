@@ -18,4 +18,4 @@ Sample RESTful API built with Hono framework and Cloudflare Workers. Provides se
 - Cloudflare Workers for serverless edge deployment
 - TypeScript for type safety
 - Wrangler for deployment and local development
-- Biome for linting and formatting
+- Vite+ for linting, formatting, and testing

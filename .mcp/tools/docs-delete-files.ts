@@ -8,9 +8,7 @@ export const docsDeleteFiles = tool({
     type: z
       .enum(["repositories", "requirements", "terms", "issues", "notes"])
       .describe("Type of documents to delete"),
-    fileIds: z
-      .array(z.string())
-      .describe("Array of IDs to delete (overview cannot be deleted)"),
+    fileIds: z.array(z.string()).describe("Array of IDs to delete (overview cannot be deleted)"),
   }),
   async handler(input, context) {
     const indexFiles = input.fileIds.indexOf("index")

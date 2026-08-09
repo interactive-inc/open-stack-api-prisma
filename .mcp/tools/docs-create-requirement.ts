@@ -5,13 +5,9 @@ export const docsCreateRequirement = tool({
   name: "docs-create-requirement",
   description: "Create a new requirement definition",
   schema: z.object({
-    requirementSlug: z
-      .string()
-      .describe("Requirement slug (alphanumeric with hyphens)"),
+    requirementSlug: z.string().describe("Requirement slug (alphanumeric with hyphens)"),
     markdown: z.string().describe("Markdown content"),
-    priority: z
-      .number()
-      .describe("Requirement priority (0: high, 1: medium, 2: low)"),
+    priority: z.number().describe("Requirement priority (0: high, 1: medium, 2: low)"),
     productIds: z.string().array().describe("Array of related product IDs"),
   }),
   async handler(input, context) {

@@ -7,14 +7,9 @@ export const docsWriteRequirement = tool({
   schema: z.object({
     requirementId: z.string().describe("Requirement ID to write or update"),
     markdown: z.string().describe("Markdown content"),
-    priority: z
-      .number()
-      .describe("Requirement priority (0: high, 1: medium, 2: low)"),
+    priority: z.number().describe("Requirement priority (0: high, 1: medium, 2: low)"),
     productIds: z.string().array().describe("Array of related product IDs"),
-    repositoryIds: z
-      .string()
-      .array()
-      .describe("Array of related repository IDs"),
+    repositoryIds: z.string().array().describe("Array of related repository IDs"),
   }),
   async handler(input, context) {
     const directoryRef = context.docClient.directory("requirements", {
